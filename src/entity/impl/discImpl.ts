@@ -1,6 +1,12 @@
 import {Disc} from "../disc";
 
 export class DiscImpl implements Disc {
+    constructor(width: number) {
+        this._width = width;
+    }
+
+    private _width: number;
+
     get width(): number {
         return this._width;
     }
@@ -9,9 +15,7 @@ export class DiscImpl implements Disc {
         this._width = value;
     }
 
-    private _width: number;
-
-    constructor(width: number) {
-        this._width = width;
+    canHold(disc: Disc): boolean {
+        return this.width >= disc.width;
     }
 }
