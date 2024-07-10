@@ -8,7 +8,7 @@
   ],
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepare": "npm version patch && npm run build",
+    "versioning": "npm version patch",
     "build": "tsc",
     "test": "tsc && jest",
     "prod": "npm publish"
