@@ -1,13 +1,15 @@
 import GameInterface from '../gameInterface'
-import Tower from './tower'
+import TowerInterface from '../towerInterface'
 
 export class Game implements GameInterface {
-  constructor (towersCount: number) {
+  private readonly _towers: Array<TowerInterface>
 
+  constructor (towersCount: number) {
+    this._towers = new Array<TowerInterface>(towersCount)
   }
 
-  get towers (): Tower[] {
-    return []
+  get towers (): TowerInterface[] {
+    return this._towers.map(value => value)
   }
 
 }

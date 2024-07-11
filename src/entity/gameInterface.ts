@@ -1,5 +1,5 @@
-import Tower from './impl/tower'
+import TowerInterface from './towerInterface'
 
 export default interface GameInterface {
-  towers: Tower[];
+  towers: Array<TowerInterface>
 }
