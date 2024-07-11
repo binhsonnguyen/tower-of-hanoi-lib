@@ -1,15 +1,15 @@
-import {expect, test} from "@jest/globals";
-import {DiscFactory} from "../../src/entity/discFactory";
-import {Disc} from "../../src/entity/disc";
+import { expect, test } from '@jest/globals'
+import DiscInterface from '../../src/entity/discInterface'
+import { Disc } from '../../src/entity/impl/disc'
 
 test('test create disc', () => {
-    const disc: Disc = DiscFactory.create(1);
-    expect(disc.width).toBe(1);
-});
+  const disc: DiscInterface = new Disc(1)
+  expect(disc.width).toBe(1)
+})
 
 test('test a disc can hold another disc or not', () => {
-    const disc1: Disc = DiscFactory.create(1);
-    const disc2: Disc = DiscFactory.create(2);
-    expect(disc2.canHold(disc1)).toBeTruthy();
-    expect(disc1.canHold(disc2)).toBeFalsy();
-});
+  const disc1: DiscInterface = new Disc(1)
+  const disc2: DiscInterface = new Disc(2)
+  expect(disc2.canHold(disc1)).toBeTruthy()
+  expect(disc1.canHold(disc2)).toBeFalsy()
+})

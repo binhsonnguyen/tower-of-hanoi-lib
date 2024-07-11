@@ -1,6 +1,6 @@
-import {Disc} from "../disc";
+import DiscInterface from "../discInterface";
 
-export class DiscImpl implements Disc {
+export class Disc implements DiscInterface {
     constructor(width: number) {
         this._width = width;
     }
