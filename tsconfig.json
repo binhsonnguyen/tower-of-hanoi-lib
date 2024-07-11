@@ -2,8 +2,14 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "module": "commonjs",
+    "skipLibCheck": true,
     "target": "es6",
+    // Ensure that .d.ts files are created by tsc
     "declaration": true,
+    // not generate .js files
+    "emitDeclarationOnly": true,
+    // Ensure that Babel can safely transpile files in the TypeScript project
+    "isolatedModules": true,
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
