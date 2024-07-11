@@ -3,7 +3,6 @@ import GameInterface from '../../src/entity/gameInterface'
 import { Game } from '../../src/entity/impl/game'
 import GameOptions from '../../src/entity/gameOptions'
 import EmptyTowerError from '../../src/entity/emptyTowerError'
-import DiscInterface from '../../src/entity/discInterface'
 
 test('test create a new game', () => {
   const gameOptions = new GameOptions(3, 16)
