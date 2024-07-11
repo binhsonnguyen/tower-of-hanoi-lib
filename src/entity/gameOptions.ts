@@ -1,22 +1,22 @@
 import IllegalOptionError from './illegalOptionError'
 
 export default class GameOptions {
-  private readonly _towersCount: number
-  private readonly _discsCount: number
+  private readonly _totalTowers: number
+  private readonly _totalDiscs: number
 
-  constructor (towersCount: number = 3, discsCount: number = 16) {
-    if (towersCount <= 0 || discsCount <= 0) {
+  constructor (totalTowers: number = 3, totalDiscs: number = 16) {
+    if (totalTowers <= 0 || totalDiscs <= 0) {
       throw new IllegalOptionError()
     }
-    this._towersCount = towersCount
-    this._discsCount = discsCount
+    this._totalTowers = totalTowers
+    this._totalDiscs = totalDiscs
   }
 
-  get towersCount (): number {
-    return this._towersCount
+  get totalTowers (): number {
+    return this._totalTowers
   }
 
-  get discsCount (): number {
-    return this._discsCount
+  get totalDiscs (): number {
+    return this._totalDiscs
   }
 }
