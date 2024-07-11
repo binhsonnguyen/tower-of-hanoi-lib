@@ -26,4 +26,11 @@ export class Game implements GameInterface {
     return this._towers.map(value => value)
   }
 
+  getTower (number: number): TowerInterface {
+    return this._towers[number]
+  }
+
+  moveDisc (from: number, to: number): void {
+    this.getTower(to).put(this.getTower(from).pop())
+  }
 }
