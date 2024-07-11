@@ -3,6 +3,7 @@ import TowerInterface from '../towerInterface'
 import GameOptions from '../gameOptions'
 import { Disc } from './disc'
 import Tower from './tower'
+import IllegalArgumentError from '../illegalArgumentError'
 
 export class Game implements GameInterface {
   private readonly _towers: Array<TowerInterface>
@@ -27,10 +28,22 @@ export class Game implements GameInterface {
   }
 
   getTower (number: number): TowerInterface {
+    if (number < 0 || number >= this._options.totalTowers) {
+      throw new IllegalArgumentError()
+    }
     return this._towers[number]
   }
 
   moveDisc (from: number, to: number): void {
     this.getTower(to).put(this.getTower(from).pop())
   }
+
+  won (): boolean {
+    if (!!this.getTower(0).upperDisc) {
+      return false
+    }
+    const towersThatHaveDisc = this._towers.filter(tower => !!tower.upperDisc)
+    return towersThatHaveDisc.length === 1
+  }
+
 }

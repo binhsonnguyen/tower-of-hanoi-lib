@@ -1,4 +1,4 @@
-import IllegalOptionError from './illegalOptionError'
+import IllegalArgumentError from './illegalArgumentError'
 
 export default class GameOptions {
   private readonly _totalTowers: number
@@ -6,7 +6,7 @@ export default class GameOptions {
 
   constructor (totalTowers: number = 3, totalDiscs: number = 16) {
     if (totalTowers <= 0 || totalDiscs <= 0) {
-      throw new IllegalOptionError()
+      throw new IllegalArgumentError()
     }
     this._totalTowers = totalTowers
     this._totalDiscs = totalDiscs

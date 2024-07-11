@@ -3,6 +3,7 @@ import GameInterface from '../../src/entity/gameInterface'
 import { Game } from '../../src/entity/impl/game'
 import GameOptions from '../../src/entity/gameOptions'
 import EmptyTowerError from '../../src/entity/emptyTowerError'
+import IllegalArgumentError from '../../src/entity/illegalArgumentError'
 
 test('test create a new game', () => {
   const gameOptions = new GameOptions(3, 16)
@@ -27,6 +28,8 @@ test('test game return a specific tower', () => {
   expect(game.getTower(0)).toBeDefined()
   expect(game.getTower(1)).toBeDefined()
   expect(game.getTower(2)).toBeDefined()
+  expect(() => game.getTower(3)).toThrow(IllegalArgumentError)
+  expect(() => game.getTower(-1)).toThrow(IllegalArgumentError)
 
 })
 
@@ -39,4 +42,23 @@ test('test game move disc from a tower to another', () => {
   game.moveDisc(from, to)
   expect(game.getTower(from).upperDisc?.width).toBe(2)
   expect(game.getTower(to).upperDisc?.width).toBe(1)
+})
+
+test('test game won', () => {
+  let game: GameInterface = new Game(new GameOptions(2, 1))
+  expect(game.won()).toBe(false)
+  game.moveDisc(0, 1)
+  expect(game.won()).toBe(true)
+
+  game = new Game(new GameOptions(3, 2))
+  game.moveDisc(0, 1)
+  game.moveDisc(0, 2)
+  game.moveDisc(1, 2)
+  expect(game.won()).toBe(true)
+
+  game = new Game(new GameOptions(3, 2))
+  game.moveDisc(0, 2)
+  game.moveDisc(0, 1)
+  game.moveDisc(2, 1)
+  expect(game.won()).toBe(true)
 })

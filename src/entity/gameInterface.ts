@@ -6,4 +6,6 @@ export default interface GameInterface {
   getTower (number: number): TowerInterface
 
   moveDisc (from: number, to: number): void
+
+  won (): boolean
 }
