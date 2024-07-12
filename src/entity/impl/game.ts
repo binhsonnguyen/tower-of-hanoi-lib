@@ -4,6 +4,7 @@ import GameOptions from '../gameOptions'
 import { Disc } from './disc'
 import Tower from './tower'
 import IllegalArgumentError from '../illegalArgumentError'
+import DiscInterface from '../discInterface'
 
 export class Game implements GameInterface {
   private readonly _towers: Array<TowerInterface>
@@ -25,6 +26,17 @@ export class Game implements GameInterface {
 
   get towers (): TowerInterface[] {
     return this._towers.map(value => value)
+  }
+
+  availableTowers (disc: DiscInterface): Array<number> {
+    return this._towers
+      .map((value, index) => {
+        return {
+          originIndex: index, upperDisc: value.upperDisc
+        }
+      })
+      .filter(item => !item.upperDisc || item.upperDisc.width > disc.width)
+      .map(item => item.originIndex)
   }
 
   getTower (number: number): TowerInterface {

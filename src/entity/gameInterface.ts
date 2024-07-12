@@ -1,4 +1,5 @@
 import TowerInterface from './towerInterface'
+import DiscInterface from './discInterface'
 
 export default interface GameInterface {
   towers: Array<TowerInterface>
@@ -8,4 +9,6 @@ export default interface GameInterface {
   moveDisc (from: number, to: number): void
 
   won (): boolean
+
+  availableTowers (disc: DiscInterface): Array<number>
 }

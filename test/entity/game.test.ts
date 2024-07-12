@@ -4,6 +4,7 @@ import { Game } from '../../src/entity/impl/game'
 import GameOptions from '../../src/entity/gameOptions'
 import EmptyTowerError from '../../src/entity/emptyTowerError'
 import IllegalArgumentError from '../../src/entity/illegalArgumentError'
+import { Disc } from '../../src/entity/impl/disc'
 
 test('test create a new game', () => {
   const gameOptions = new GameOptions(3, 16)
@@ -61,4 +62,16 @@ test('test game won', () => {
   game.moveDisc(0, 1)
   game.moveDisc(2, 1)
   expect(game.won()).toBe(true)
+})
+
+test('test game tell which towers are moveable a disc onto', () => {
+  let game: GameInterface = new Game(new GameOptions(2, 1))
+  expect(game.availableTowers(new Disc(1))).toEqual([1])
+
+  game = new Game(new GameOptions(3, 1))
+  expect(game.availableTowers(new Disc(1))).toEqual([1, 2])
+
+  game = new Game(new GameOptions(5, 3))
+  game.moveDisc(0, 2)
+  expect(game.availableTowers(new Disc(2))).toEqual([1, 3, 4])
 })
