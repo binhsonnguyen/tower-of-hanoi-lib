@@ -1,6 +1,6 @@
 {
   "name": "@nguyenbinhson/tower-of-hanoi-lib",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "repository": "https://github.com/binhsonnguyen/tower-of-hanoi-lib.git",
   "main": "dist/index.js",
