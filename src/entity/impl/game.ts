@@ -1,17 +1,27 @@
 import GameInterface from '../gameInterface'
 import TowerInterface from '../towerInterface'
-import GameOptions from '../gameOptions'
 import { Disc } from './disc'
 import Tower from './tower'
 import IllegalArgumentError from '../illegalArgumentError'
 import DiscInterface from '../discInterface'
 
+
+const defaultGameOptions: GameOptions = {
+  totalTowers: 3,
+  totalDiscs: 3
+}
+
+export type GameOptions = {
+  totalTowers: number,
+  totalDiscs: number
+}
+
 export class Game implements GameInterface {
   private readonly _towers: Array<TowerInterface>
   private readonly _options: GameOptions
 
-  constructor (options: GameOptions) {
-    this._options = options
+  constructor (options: Partial<GameOptions>) {
+    this._options = {...defaultGameOptions, ...options}
 
     this._towers = new Array<TowerInterface>(this._options.totalTowers)
     for (let i = 0; i < this._options.totalTowers; i++) {
