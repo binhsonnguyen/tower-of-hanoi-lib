@@ -20,7 +20,7 @@ export class Game implements GameInterface {
   private readonly _towers: Array<TowerInterface>
   private readonly _options: GameOptions
 
-  constructor (options: Partial<GameOptions>) {
+  constructor (options: Partial<GameOptions> = {}) {
     this._options = {...defaultGameOptions, ...options}
 
     this._towers = new Array<TowerInterface>(this._options.totalTowers)

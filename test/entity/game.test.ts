@@ -6,11 +6,7 @@ import IllegalArgumentError from '../../src/entity/illegalArgumentError'
 import { Disc } from '../../src/entity/impl/disc'
 
 test('test create a new game', () => {
-  const gameOptions: GameOptions = {
-    totalTowers: 3,
-    totalDiscs: 16
-  }
-  const game: GameInterface = new Game(gameOptions)
+  const game: GameInterface = new Game()
   expect(game.towers.length).toBe(3)
 })
 
